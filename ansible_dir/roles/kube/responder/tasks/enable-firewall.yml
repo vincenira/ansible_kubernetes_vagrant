@@ -1,0 +1,37 @@
+---
+- name: install Ansible Python for firewalld (RHEL/CentOS)
+  when: ansible_os_family == "RedHat"
+  yum:
+    name: "{{ item }}"
+    update_cache: yes
+    state: installed
+  with_items: 
+    - firewalld
+
+- name: install Ansible Python for firewalld (Debian/Ubuntu)
+  when: ansible_os_family == "Debian"
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items: 
+    - firewalld
+  
+- name: enable firewalld ports required for kubernetes responder
+  vars:
+    ansible_python_interpreter: '/usr/bin/python3'
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  with_items:
+    - "30000-32767/tcp"
+    - "10250/tcp"
+    - "10255/tcp"
+    
+- name: enable firewall masquerade 
+  command: |
+    sudo firewall-cmd --add-masquerade --permanent
+  notify:
+    - Reloading the firewall
+

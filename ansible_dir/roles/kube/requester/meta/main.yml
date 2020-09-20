@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: os-requirements/os-checker }
+  - { role: os-requirements/pre-install , pkgs: ["kubelet", "kubeadm", "kubectl"] }

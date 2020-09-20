@@ -1,0 +1,14 @@
+nodes:
+  - name: responder01.kubevincelabs.com
+    ":ip": 192.168.56.26
+    ":memory": 2048
+    ":bootstrap": scripts/bootstrap-install.sh
+  - name: responder02.kubevincelabs.com
+    ":ip": 192.168.56.36
+    ":memory": 2048
+    ":bootstrap": scripts/bootstrap-install.sh
+  - name: requester.kubevincelabs.com
+    ":ip": 192.168.56.16
+    ":memory": 2048
+    ":bootstrap": scripts/bootstrap-install.sh
+    

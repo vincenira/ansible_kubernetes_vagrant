@@ -1,0 +1,16 @@
+
+[kuberequester-nodes]
+kuberequester ansible_host=10.11.12.2
+
+[kuberesponder-nodes]
+kuberesponder1 ansible_host=10.11.12.3
+kuberesponder2 ansible_host=10.11.12.4
+
+
+[kubernetes:children]
+kuberesponder-nodes
+kuberequester-nodes
+
+[kubernetes:vars]
+ansible_password=vagrant
+ansible_ssh_user=vagrant

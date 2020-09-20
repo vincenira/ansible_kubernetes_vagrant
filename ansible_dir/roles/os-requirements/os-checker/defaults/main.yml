@@ -1,0 +1,6 @@
+---
+systemd_folder: /lib/systemd/system
+sysconfig_folder: /etc/sysconfig
+net_folder: /etc/kubernetes/network
+kubeadminConf: /etc/kubernetes/admin.conf
+addon_folder: /etc/kubernetes/addon

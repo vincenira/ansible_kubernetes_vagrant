@@ -1,0 +1,16 @@
+- import_playbook: swappoff.yaml
+- name: This is a CentOS 
+  debug: msg='kubernetes will be installed on CentOS distribution'
+  include: 
+    - centos/{ansible_distribution_version}/setup_node.yaml
+    - centos/{ansible_distribution_version}/configure_requester_node.yaml
+    - centos/{ansible_distribution_version}/configure_responder_node.yaml
+  when: ansible_distribution == "CentOS" and (ansible_distribution_version == '7' or ansible_distribution_version == '8')
+
+- name: This is a Ubuntu 
+  debug: msg='kubernetes will be installed on CentOS distribution'
+  include:
+    - ubuntu/setup_node.yaml
+    - ubuntu/configure_requester_node.yaml
+    - ubuntu/configure_responder_node.yaml
+  when: ansible_distribution == "Ubuntu"

@@ -1,0 +1,46 @@
+# Ansible
+# ansible_user: root
+# ansible python interpreter
+ansible_python_interpreter: "/usr/bin/python3"
+# Kubernetes
+kube_version: "v1.19.0"
+token: b0f7b8.8d1767876297d85c
+
+# 1.8.x feature: --feature-gates SelfHosting=true
+init_opts: ""
+
+# Any other additional opts you want to add..
+kubeadm_opts: ""
+# For example:
+# kubeadm_opts: '--apiserver-cert-extra-sans "k8s.domain.com,kubernetes.domain.com"'
+
+service_cidr: "10.72.0.0/12"
+pod_network_cidr: "10.244.0.0/16"
+
+# Network implementation('flannel', 'calico', 'canal')
+network: calico
+
+# Change this to an appropriate interface, preferably a private network.
+# For example, on DigitalOcean, you would use eth1 as that is the default private network interface.
+network_interface: "enp0s8"
+
+enable_dashboard: yes
+
+# A list of insecure registries you might need to define
+# insecure_registries: []
+insecure_registries: ['gcr.io','docker.io']
+
+systemd_folder: /lib/systemd/system
+sysconfig_folder: /etc/sysconfig
+net_folder: /etc/kubernetes/network
+kubeadminConf: /etc/kubernetes/admin.conf
+addon_folder: /etc/kubernetes/addon
+
+# Additional feature to install
+additional_features:
+  helm: false
+  metallb: false
+  healthcheck: false
+
+# temporary directory used by additional features
+tmp_dir: /tmp/kubeadm-ansible-files

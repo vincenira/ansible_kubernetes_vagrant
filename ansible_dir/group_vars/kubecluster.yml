@@ -1,0 +1,2 @@
+---
+master_ip: "{{ hostvars[groups['requester'][0]]['ansible_'~network_interface].ipv4.address }}"
